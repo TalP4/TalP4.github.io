@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Project TalP4</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <div id="username-container">
+        <p>Make your username!</p>
+        <input type="text" id="username-input" placeholder="Enter your username...">
+        <button onclick="setUsername()">Set Username</button>
+    </div>
+    <div id="chat-container" style="display:none;">
+        <div id="chat"></div>
+        <input type="text" id="message" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+        var socket = new WebSocket("ws://localhost:9000");
+        var username = "";
+
+        function setUsername() {
+            var usernameInput = document.getElementById("username-input");
+            username = usernameInput.value;
+            if (username.trim() === "") {
+                alert("Please enter a username.");
+                return;
+            }
+
+            // Hide username container and show chat container
+            document.getElementById("username-container").style.display = "none";
+            document.getElementById("chat-container").style.display = "block";
+        }
+
+        socket.onmessage = function(event) {
+            var chat = document.getElementById("chat");
+            var message = document.createElement("div");
+            message.textContent = event.data;
+            chat.appendChild(message);
+        };
+
+        function sendMessage() {
+            var messageInput = document.getElementById("message");
+            var message = messageInput.value;
+            messageInput.value = "";
+
+            socket.send(username + ": " + message);
+        }
+    </script>
+</body>
+</html>
