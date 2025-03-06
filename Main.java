@@ -1,5 +1,8 @@
 import java.util.HashMap;
 import java.util.Map;
+import org.eclipse.jetty.server.Server;
+import org.eclipse.jetty.servlet.ServletContextHandler;
+import org.eclipse.jetty.servlet.ServletHolder;
 import org.eclipse.jetty.websocket.api.Session;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketClose;
 import org.eclipse.jetty.websocket.api.annotations.OnWebSocketConnect;
@@ -13,7 +16,18 @@ public class Main {
     private static final String adminUsername = "TalP4";
     private static final String adminPassword = "Project Anonymous";
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
+        // Set up Jetty server
+        Server server = new Server(8080);
+        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+        context.setContextPath("/");
+        server.setHandler(context);
+        
+        // Add a simple servlet at "/"
+        context.addServlet(new ServletHolder(new HelloServlet()), "/*");
+
+        server.start();
+        
         Spark.webSocket("/chat", ChatWebSocket.class);
         Spark.init();
 
