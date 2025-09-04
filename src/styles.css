@@ -1,0 +1,133 @@
+/**
+ * Discord-like theme for login/signup/chat app
+ */
+body {
+    background-color: #36393f;
+    color: #dcddde;
+    font-family: 'gg sans', 'Noto Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+the .auth-box {
+    background: #2f3136;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    padding: 36px 32px;
+    min-width: 350px;
+    max-width: 370px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.auth-box h2 {
+    color: #fff;
+    margin-bottom: 16px;
+    font-weight: 700;
+}
+
+.auth-box label {
+    align-self: flex-start;
+    margin-bottom: 6px;
+    color: #b9bbbe;
+    font-size: 14px;
+}
+
+.auth-box input[type="text"],
+.auth-box input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 16px;
+    background: #202225;
+    border: 1px solid #202225;
+    color: #dcddde;
+    border-radius: 4px;
+    font-size: 16px;
+    outline: none;
+    transition: border 0.2s;
+}
+
+.auth-box input[type="text"]:focus,
+.auth-box input[type="password"]:focus {
+    border: 1px solid #7289da;
+}
+
+button {
+    width: 100%;
+    background: #5865f2;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 600;
+    padding: 10px 0;
+    margin-bottom: 12px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+button:hover {
+    background: #4752c4;
+}
+
+the .toggle-link {
+    color: #00b0f4;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 14px;
+    margin-top: 8px;
+    transition: color 0.2s;
+}
+.toggle-link:hover {
+    color: #fff;
+    text-decoration: underline;
+}
+
+/* Chat area */
+.chat-area {
+    background: #36393f;
+    border-radius: 8px;
+    padding: 24px;
+    margin: 0 auto;
+    max-width: 700px;
+    min-height: 400px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    color: #dcddde;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.message {
+    background: #2f3136;
+    border-radius: 5px;
+    padding: 10px 18px;
+    margin-bottom: 6px;
+    color: #fff;
+    align-self: flex-start;
+    max-width: 78%;
+}
+
+.message.me {
+    background: #5865f2;
+    color: #fff;
+    align-self: flex-end;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    background: #2f3136;
+}
+::-webkit-scrollbar-thumb {
+    background: #23272a;
+    border-radius: 8px;
+}
