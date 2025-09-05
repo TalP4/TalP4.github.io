@@ -1,5 +1,5 @@
 # Use a Maven image that includes Java and Maven
-FROM maven:3.8.7-openjdk-17 AS build
+FROM maven:3-openjdk-17 AS build
 
 # Set the working directory inside the container
 WORKDIR /app
@@ -25,4 +25,3 @@ EXPOSE 8080
 
 # Run the application
 CMD ["java", "-jar", "app.jar"]
-
