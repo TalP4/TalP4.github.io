@@ -14,7 +14,7 @@ import spark.utils.StringUtils;
 public class Main {
     private static Map<String, Session> sessions = new HashMap<>();
     private static final String adminUsername = "TalP4";
-    private static final String adminPassword = "Project Anonymous";
+    private static final String adminPassword = "1832";
 
     public static void main(String[] args) throws Exception {
         // Set up Jetty server
