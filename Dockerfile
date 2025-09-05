@@ -3,9 +3,11 @@ FROM maven:3-openjdk-17 AS build
 
 # Set the working directory inside the container
 WORKDIR /app
-
-# Copy the pom.xml and the entire src directory
+#
+# Copy the pom.xml file
 COPY pom.xml .
+
+# Copy the entire src directory, which contains all the project files
 COPY src ./src
 
 # Build the Java application using Maven
@@ -25,3 +27,4 @@ EXPOSE 8080
 
 # Run the application
 CMD ["java", "-jar", "app.jar"]
+
