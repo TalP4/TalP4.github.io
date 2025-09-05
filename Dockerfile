@@ -1,13 +1,11 @@
 # Use a Maven image that includes Java and Maven
-FROM maven:3-openjdk-17 AS build
+FROM maven:3.8.5-openjdk-17-slim AS build
 
 # Set the working directory inside the container
 WORKDIR /app
-#
-# Copy the pom.xml file
-COPY pom.xml .
 
-# Copy the entire src directory, which contains all the project files
+# Copy the pom.xml file and the entire src directory
+COPY pom.xml .
 COPY src ./src
 
 # Build the Java application using Maven
